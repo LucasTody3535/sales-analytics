@@ -1,6 +1,7 @@
 import csv
 
 from src.sales_dataset_column import SalesDatasetColumn
+from src.category import Category
 
 class SalesDataset:
     """
@@ -54,3 +55,21 @@ class SalesDataset:
                 columns["state"].append_cell_value(row[9])
                 columns["city"].append_cell_value(row[10])
                 columns["year_month"].append_cell_value(row[11])
+
+    def extract_categories_from_rows(self, col: SalesDatasetColumn) -> list[Category]:
+        categories = []
+        category = None
+        colors = [ "red", "blue", "green", "purple", "orange" ]
+        profit = 0
+        columns = self.get_columns()
+
+        for category_name in set(col.get_cells()):
+            category = Category(category_name, 0, None, None)
+            for idx, profit_val in enumerate(columns["profit"].get_cells()):
+                if category_name == col.get_cells()[idx]:
+                    profit += float(profit_val)
+            category.set_profit(profit)
+            categories.append(category)
+            profit = 0
+
+        return categories
