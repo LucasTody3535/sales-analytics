@@ -40,3 +40,9 @@ class Category:
         for subcategory in self.get_subcategories():
             subcat_colors.append(subcategory.get_color())
         return (self.get_color(), subcat_colors)
+
+    def extract_profits(self) -> tuple[float, list[float]]:
+        subcat_profits = []
+        for subcategory in self.get_subcategories():
+            subcat_profits.append(subcategory.get_profit())
+        return (self.get_profit(), subcat_profits)
