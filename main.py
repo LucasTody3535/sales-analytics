@@ -4,7 +4,6 @@ from src.report import Report
 if __name__ == "__main__":
     sales = SalesDataset("data/Sales Dataset.csv")
     report = Report("A4", "Portrait")
-    templates_content = None
 
     sales.extract_rows()
     report.init("Sales Report for the XPTO Company")
