@@ -73,3 +73,15 @@ class SalesDataset:
             profit = 0
 
         return categories
+
+    def group_categories_and_subcategories(self, categories: list[Category], subcategories: list[Category]):
+        categories_col = self.get_columns()["category"]
+        subcategories_col = self.get_columns()["subcategory"]
+        grouped_subcategories = set()
+        for category in categories:
+            for subcategory in subcategories:
+                for idz, subcat_cell in enumerate(subcategories_col.get_cells()):
+                    if subcat_cell == subcategory.get_name() and categories_col.get_cells()[idz] == category.get_name():
+                        grouped_subcategories.add(subcategory)
+            category.set_subcategories(list(grouped_subcategories))
+            grouped_subcategories.clear()
