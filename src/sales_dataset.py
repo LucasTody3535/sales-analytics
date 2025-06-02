@@ -59,7 +59,6 @@ class SalesDataset:
     def extract_categories_from_rows(self, col: SalesDatasetColumn) -> list[Category]:
         categories = []
         category = None
-        colors = [ "red", "blue", "green", "purple", "orange" ]
         profit = 0
         columns = self.get_columns()
 
