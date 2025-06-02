@@ -20,5 +20,6 @@ if __name__ == "__main__":
     categories = sales.extract_categories_from_rows(sales.get_columns()["category"])
     subcategories = sales.extract_categories_from_rows(sales.get_columns()["subcategory"])
     sales.group_categories_and_subcategories(categories, subcategories)
+    sales.set_colors(categories)
 
     report.gen("out/Report.pdf")
