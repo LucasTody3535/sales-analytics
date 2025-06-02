@@ -84,3 +84,12 @@ class SalesDataset:
                         grouped_subcategories.add(subcategory)
             category.set_subcategories(list(grouped_subcategories))
             grouped_subcategories.clear()
+
+    def set_colors(self, categories: list[Category]):
+        colors = ["red", "blue", "green", "purple", "orange"]
+        color = ""
+        for category in categories:
+            color = colors.pop()
+            category.set_color(color)
+            for subcategories in category.get_subcategories():
+                subcategories.set_color(color)
