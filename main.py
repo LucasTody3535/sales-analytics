@@ -9,7 +9,7 @@ if __name__ == "__main__":
     sales.extract_rows()
     report.init("Sales Report for the XPTO Company")
 
-    with open("templates/greetings.txt") as greetings:
+    with open("templates/greetings.txt", encoding="utf-8") as greetings:
         content = greetings.read()
         content = content.replace("<t1>", "John Doe")
         content = content.replace("<t2>", "XPTO")
