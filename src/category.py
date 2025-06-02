@@ -34,3 +34,9 @@ class Category:
 
     def get_subcategories(self) -> list[Self]:
         return self.__subcategories
+
+    def extract_colors(self) -> tuple[str, list[str]]:
+        subcat_colors = []
+        for subcategory in self.get_subcategories():
+            subcat_colors.append(subcategory.get_color())
+        return (self.get_color(), subcat_colors)
