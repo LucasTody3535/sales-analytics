@@ -1,5 +1,6 @@
 from src.sales_dataset import SalesDataset
 from src.report import Report
+from src.barchart import BarChart
 
 if __name__ == "__main__":
     sales = SalesDataset("data/Sales Dataset.csv")
@@ -21,5 +22,22 @@ if __name__ == "__main__":
     subcategories = sales.extract_categories_from_rows(sales.get_columns()["subcategory"])
     sales.group_categories_and_subcategories(categories, subcategories)
     sales.set_colors(categories)
+
+    bar_chart = BarChart()
+
+    categories_names = []
+    categories_colors = []
+    categories_profits = []
+    for cat in categories:
+        cat_color, subcat_colors = cat.extract_colors()
+        cat_profit, subcat_profit = cat.extract_profits()
+        categories_names.append(cat.get_name())
+        categories_colors.append(f"tab:{cat_color}")
+        categories_profits.append(cat_profit)
+
+    bar_chart.set_labels(categories_names)
+    bar_chart.set_data(categories_profits)
+    bar_chart.set_colors(categories_colors)
+    bar_chart.gen_chart(title="Total profit")
 
     report.gen("out/Report.pdf")
