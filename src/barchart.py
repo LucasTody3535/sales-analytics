@@ -47,3 +47,6 @@ class BarChart:
 
     def show(self):
         plt.show()
+
+    def save_as_image(self, path: str):
+        self.__chart_fig.savefig(path)
