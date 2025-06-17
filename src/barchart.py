@@ -50,7 +50,7 @@ class BarChart:
         plt.show()
 
     def save_as_image(self, path: str):
-        self.__chart_fig.savefig(path)
+        self.__chart_fig.savefig(path, dpi=500, bbox_inches="tight")
 
     def clear(self):
         self.__chart_ax.clear()
