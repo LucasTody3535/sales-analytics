@@ -40,9 +40,10 @@ class BarChart:
             formmated_data[idx] = f"${formmated_data[idx]}"
         return formmated_data
 
-    def gen_chart(self, title: str):
+    def gen_chart(self, title: str, labels_rotation: float = 0):
         formmated_data = self.__format_legend_labels()
         self.__chart_ax.bar(self.get_labels(), self.get_data(), label=formmated_data, color=self.get_colors())
+        plt.xticks(rotation=labels_rotation)
         self.__chart_ax.legend(title=title)
 
     def show(self):
