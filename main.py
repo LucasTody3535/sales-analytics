@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
     bar_chart.save_as_image(categories_chart_image_path)
     img_dims = { "height": 110, "width": 180 }
-    img_coord = { "x": report.dims()["left_m"] + 13, "y": 40 }
+    img_coord = { "x": report.dims()["left_m"] + 10, "y": 40 }
     report.add_image(categories_chart_image_path, img_dims, img_coord)
 
     bar_chart.clear()
