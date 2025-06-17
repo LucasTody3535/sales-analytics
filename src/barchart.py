@@ -50,3 +50,6 @@ class BarChart:
 
     def save_as_image(self, path: str):
         self.__chart_fig.savefig(path)
+
+    def clear(self):
+        self.__chart_ax.clear()
