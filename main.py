@@ -74,6 +74,19 @@ if __name__ == "__main__":
     bar_chart.set_colors(subcategories_colors)
     bar_chart.gen_chart(title="Total profit", labels_rotation=90)
 
+    with open("templates/subcategories.txt", encoding="utf-8") as subcategories_intro:
+        content = subcategories_intro.read()
+
+        font_data = { "family": "Times", "style": "", "size": 12 }
+        font_coord = { "x": report.dims()["left_m"], "y": 155 }
+        report.add_text(content, font_coord, font_data, multiline=True)
+
+    subcategories_chart_image_path = "./out/subcategories_profit.png"
+    bar_chart.save_as_image(subcategories_chart_image_path)
+    img_dims = { "height": 130, "width": 180 }
+    img_coord = { "x": report.dims()["left_m"] + 10, "y": 167 }
+    report.add_image(subcategories_chart_image_path, img_dims, img_coord)
+
     remove(categories_chart_image_path)
     remove(subcategories_chart_image_path)
 
