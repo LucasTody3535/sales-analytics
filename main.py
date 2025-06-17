@@ -1,4 +1,5 @@
-from os import remove
+from os import remove, getcwd, sep
+from webbrowser import open_new_tab
 
 from src.sales_dataset import SalesDataset
 from src.report import Report
@@ -89,5 +90,7 @@ if __name__ == "__main__":
 
     remove(categories_chart_image_path)
     remove(subcategories_chart_image_path)
+
+    open_new_tab(f"{getcwd()}{sep}out{sep}Report.pdf")
 
     report.gen("out/Report.pdf")
