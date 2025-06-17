@@ -30,12 +30,20 @@ if __name__ == "__main__":
     categories_names = []
     categories_colors = []
     categories_profits = []
+    subcategories_names = []
+    subcategories_colors = []
+    subcategories_profits = []
     for cat in categories:
         cat_color, subcat_colors = cat.extract_colors()
         cat_profit, subcat_profit = cat.extract_profits()
         categories_names.append(cat.get_name())
         categories_colors.append(f"tab:{cat_color}")
         categories_profits.append(cat_profit)
+        for subcat in cat.get_subcategories():
+            subcategories_names.append(subcat.get_name())
+        for color in subcat_colors:
+            subcategories_colors.append(f"tab:{color}")
+        subcategories_profits.extend(subcat_profit)
 
     bar_chart.set_labels(categories_names)
     bar_chart.set_data(categories_profits)
@@ -59,7 +67,14 @@ if __name__ == "__main__":
     img_dims = { "height": 110, "width": 180 }
     img_coord = { "x": report.dims()["left_m"] + 13, "y": 40 }
     report.add_image(categories_chart_image_path, img_dims, img_coord)
-    
+
+    bar_chart.clear()
+    bar_chart.set_labels(subcategories_names)
+    bar_chart.set_data(subcategories_profits)
+    bar_chart.set_colors(subcategories_colors)
+    bar_chart.gen_chart(title="Total profit", labels_rotation=90)
+
     remove(categories_chart_image_path)
+    remove(subcategories_chart_image_path)
 
     report.gen("out/Report.pdf")
