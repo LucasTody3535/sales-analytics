@@ -1,3 +1,4 @@
 matplotlib
 numpy
 fpdf2
+black
