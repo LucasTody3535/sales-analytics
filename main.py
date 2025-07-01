@@ -17,12 +17,14 @@ if __name__ == "__main__":
         content = content.replace("<t1>", "John Doe")
         content = content.replace("<t2>", "XPTO")
 
-        font_data = { "family": "Times", "style": "", "size": 12 }
-        font_coord = { "x": report.dims()["left_m"], "y": 15 }
+        font_data = {"family": "Times", "style": "", "size": 12}
+        font_coord = {"x": report.dims()["left_m"], "y": 15}
         report.add_text(content, font_coord, font_data, multiline=True)
 
     categories = sales.extract_categories_from_rows(sales.get_columns()["category"])
-    subcategories = sales.extract_categories_from_rows(sales.get_columns()["subcategory"])
+    subcategories = sales.extract_categories_from_rows(
+        sales.get_columns()["subcategory"]
+    )
     sales.group_categories_and_subcategories(categories, subcategories)
     sales.set_colors(categories)
 
@@ -57,16 +59,20 @@ if __name__ == "__main__":
 
     with open("templates/categories.txt", encoding="utf-8") as categories_intro:
         content = categories_intro.read()
-        content = content.replace("<c1>", categories_names[most_profitable_category_idx].lower())
-        content = content.replace("<c2>", categories_names[least_profitable_category_idx].lower())
+        content = content.replace(
+            "<c1>", categories_names[most_profitable_category_idx].lower()
+        )
+        content = content.replace(
+            "<c2>", categories_names[least_profitable_category_idx].lower()
+        )
 
-        font_data = { "family": "Times", "style": "", "size": 12 }
-        font_coord = { "x": report.dims()["left_m"], "y": 30 }
+        font_data = {"family": "Times", "style": "", "size": 12}
+        font_coord = {"x": report.dims()["left_m"], "y": 30}
         report.add_text(content, font_coord, font_data, multiline=True)
 
     bar_chart.save_as_image(categories_chart_image_path)
-    img_dims = { "height": 110, "width": 180 }
-    img_coord = { "x": report.dims()["left_m"] + 10, "y": 40 }
+    img_dims = {"height": 110, "width": 180}
+    img_coord = {"x": report.dims()["left_m"] + 10, "y": 40}
     report.add_image(categories_chart_image_path, img_dims, img_coord)
 
     bar_chart.clear()
@@ -78,14 +84,14 @@ if __name__ == "__main__":
     with open("templates/subcategories.txt", encoding="utf-8") as subcategories_intro:
         content = subcategories_intro.read()
 
-        font_data = { "family": "Times", "style": "", "size": 12 }
-        font_coord = { "x": report.dims()["left_m"], "y": 155 }
+        font_data = {"family": "Times", "style": "", "size": 12}
+        font_coord = {"x": report.dims()["left_m"], "y": 155}
         report.add_text(content, font_coord, font_data, multiline=True)
 
     subcategories_chart_image_path = "./out/subcategories_profit.png"
     bar_chart.save_as_image(subcategories_chart_image_path)
-    img_dims = { "height": 130, "width": 180 }
-    img_coord = { "x": report.dims()["left_m"] + 10, "y": 167 }
+    img_dims = {"height": 130, "width": 180}
+    img_coord = {"x": report.dims()["left_m"] + 10, "y": 167}
     report.add_image(subcategories_chart_image_path, img_dims, img_coord)
 
     remove(categories_chart_image_path)

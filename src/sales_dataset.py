@@ -3,27 +3,31 @@ import csv
 from src.sales_dataset_column import SalesDatasetColumn
 from src.category import Category
 
+
 class SalesDataset:
     """
-        Represents a sales dataset, responsible for extracting the values
-        in the rows for further processing
+    Represents a sales dataset, responsible for extracting the values
+    in the rows for further processing
     """
+
     def __init__(self, filename: str):
         self.set_filename(filename)
-        self.set_columns({
-            "order_id": SalesDatasetColumn("Order ID"),
-            "amount": SalesDatasetColumn("Amount"),
-            "profit": SalesDatasetColumn("Profit"),
-            "quantity": SalesDatasetColumn("Quantity"),
-            "category": SalesDatasetColumn("Category"),
-            "subcategory": SalesDatasetColumn("Sub-Category"),
-            "payment_mode": SalesDatasetColumn("PaymentMode"),
-            "order_date": SalesDatasetColumn("Order Date"),
-            "customer_name": SalesDatasetColumn("Customer Name"),
-            "state": SalesDatasetColumn("State"),
-            "city": SalesDatasetColumn("City"),
-            "year_month": SalesDatasetColumn("Year-Month")
-        })
+        self.set_columns(
+            {
+                "order_id": SalesDatasetColumn("Order ID"),
+                "amount": SalesDatasetColumn("Amount"),
+                "profit": SalesDatasetColumn("Profit"),
+                "quantity": SalesDatasetColumn("Quantity"),
+                "category": SalesDatasetColumn("Category"),
+                "subcategory": SalesDatasetColumn("Sub-Category"),
+                "payment_mode": SalesDatasetColumn("PaymentMode"),
+                "order_date": SalesDatasetColumn("Order Date"),
+                "customer_name": SalesDatasetColumn("Customer Name"),
+                "state": SalesDatasetColumn("State"),
+                "city": SalesDatasetColumn("City"),
+                "year_month": SalesDatasetColumn("Year-Month"),
+            }
+        )
 
     def set_filename(self, filename: str):
         self.__filename = filename
@@ -40,8 +44,8 @@ class SalesDataset:
     def extract_rows(self):
         columns = self.get_columns()
         filename = self.get_filename()
-        with open(filename, 'r', newline='', encoding='UTF-8') as sales:
-            reader = csv.reader(sales, delimiter=',', quotechar=' ')
+        with open(filename, "r", newline="", encoding="UTF-8") as sales:
+            reader = csv.reader(sales, delimiter=",", quotechar=" ")
             for row in reader:
                 columns["order_id"].append_cell_value(row[0])
                 columns["amount"].append_cell_value(row[1])
@@ -73,14 +77,19 @@ class SalesDataset:
 
         return categories
 
-    def group_categories_and_subcategories(self, categories: list[Category], subcategories: list[Category]):
+    def group_categories_and_subcategories(
+        self, categories: list[Category], subcategories: list[Category]
+    ):
         categories_col = self.get_columns()["category"]
         subcategories_col = self.get_columns()["subcategory"]
         grouped_subcategories = set()
         for category in categories:
             for subcategory in subcategories:
                 for idz, subcat_cell in enumerate(subcategories_col.get_cells()):
-                    if subcat_cell == subcategory.get_name() and categories_col.get_cells()[idz] == category.get_name():
+                    if (
+                        subcat_cell == subcategory.get_name()
+                        and categories_col.get_cells()[idz] == category.get_name()
+                    ):
                         grouped_subcategories.add(subcategory)
             category.set_subcategories(list(grouped_subcategories))
             grouped_subcategories.clear()

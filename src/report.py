@@ -1,5 +1,6 @@
 from fpdf import FPDF
 
+
 class Report:
     def __init__(self, page_format: str, orientation: str):
         self.__set_pdf(FPDF(format=page_format, orientation=orientation))
@@ -15,8 +16,8 @@ class Report:
         self.add_page()
         self.__get_pdf().set_margin(margin)
 
-        font_data = { "family": "Times", "style": "B", "size": 20 }
-        font_coord = { "x": self.dims()["left_m"], "y": 10 }
+        font_data = {"family": "Times", "style": "B", "size": 20}
+        font_coord = {"x": self.dims()["left_m"], "y": 10}
         self.add_text(title, font_coord, font_data)
 
     def gen(self, filename: str):
@@ -25,15 +26,26 @@ class Report:
     def dims(self) -> dict[str, float]:
         pdf = self.__get_pdf()
         return {
-            "height": pdf.eph, "width": pdf.epw,
-            "left_m": pdf.l_margin, "right_m": pdf.r_margin,
-            "top_m": pdf.t_margin, "bottom_m": pdf.b_margin
+            "height": pdf.eph,
+            "width": pdf.epw,
+            "left_m": pdf.l_margin,
+            "right_m": pdf.r_margin,
+            "top_m": pdf.t_margin,
+            "bottom_m": pdf.b_margin,
         }
 
     def add_image(self, path: str, dims: dict[str, float], coord: dict[str, float]):
-        self.__get_pdf().image(path, h=dims["height"], w=dims["width"], y=coord["y"], x=coord["x"])
+        self.__get_pdf().image(
+            path, h=dims["height"], w=dims["width"], y=coord["y"], x=coord["x"]
+        )
 
-    def add_text(self, text: str, coord: dict[str, float], font_data: dict[str, str], multiline=False):
+    def add_text(
+        self,
+        text: str,
+        coord: dict[str, float],
+        font_data: dict[str, str],
+        multiline=False,
+    ):
         pdf = self.__get_pdf()
         pdf.set_font(font_data["family"], font_data["style"], font_data["size"])
         if multiline:
@@ -46,4 +58,3 @@ class Report:
 
     def add_page(self):
         self.__get_pdf().add_page()
-

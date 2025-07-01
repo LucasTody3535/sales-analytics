@@ -1,8 +1,9 @@
 class SalesDatasetColumn:
     """
-        Represents a column in the sales dataset, composed by an identifier related
-        to the column and the corresponding cells
+    Represents a column in the sales dataset, composed by an identifier related
+    to the column and the corresponding cells
     """
+
     def __init__(self, name: str):
         self.set_name(name)
         self.set_cells([])
