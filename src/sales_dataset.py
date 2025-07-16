@@ -66,10 +66,10 @@ class SalesDataset:
         profit = 0
         columns = self.get_columns()
 
-        for category_name in set(col.get_cells()):
+        for category_name in set(col.cells):
             category = Category(category_name, 0, None, None)
-            for idx, profit_val in enumerate(columns["profit"].get_cells()):
-                if category_name == col.get_cells()[idx]:
+            for idx, profit_val in enumerate(columns["profit"].cells):
+                if category_name == col.cells[idx]:
                     profit += float(profit_val)
             category.profit = profit
             categories.append(category)
@@ -85,10 +85,10 @@ class SalesDataset:
         grouped_subcategories = set()
         for category in categories:
             for subcategory in subcategories:
-                for idz, subcat_cell in enumerate(subcategories_col.get_cells()):
+                for idz, subcat_cell in enumerate(subcategories_col.cells):
                     if (
                         subcat_cell == subcategory.name
-                        and categories_col.get_cells()[idz] == category.name
+                        and categories_col.cells[idz] == category.name
                     ):
                         grouped_subcategories.add(subcategory)
             category.subcategories = list(grouped_subcategories)

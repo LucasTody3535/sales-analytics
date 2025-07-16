@@ -8,17 +8,21 @@ class SalesDatasetColumn:
         self.__name = name
         self.__cells = []
 
-    def set_name(self, name: str):
-        self.__name = name
-
-    def get_name(self) -> str:
+    @property
+    def name(self) -> str:
         return self.__name
 
-    def set_cells(self, cells: list[str]):
-        self.__cells = cells
-
-    def get_cells(self) -> list[str]:
+    @property
+    def cells(self) -> list[str]:
         return self.__cells.copy()[1:]
+
+    @name.setter
+    def name(self, name: str):
+        self.__name = name
+
+    @cells.setter
+    def cells(self, cells: list[str]):
+        self.__cells = cells
 
     def append_cell_value(self, value: str):
         self.__cells.append(value)
