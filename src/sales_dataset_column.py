@@ -5,8 +5,8 @@ class SalesDatasetColumn:
     """
 
     def __init__(self, name: str):
-        self.set_name(name)
-        self.set_cells([])
+        self.__name = name
+        self.__cells = []
 
     def set_name(self, name: str):
         self.__name = name
