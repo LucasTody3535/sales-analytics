@@ -8,13 +8,10 @@ class Category:
     """
 
     def __init__(self, name: str, profit: float, color: str, subcategories: list[Self]):
-        self.set_name(name)
-        self.set_profit(profit)
-        self.set_color(color)
-        self.set_subcategories(subcategories)
-
-    def set_name(self, name: str):
         self.__name = name
+        self.__profit = profit
+        self.__color = color
+        self.__subcategories = subcategories
 
     def get_name(self) -> str:
         return self.__name
