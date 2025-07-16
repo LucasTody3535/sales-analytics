@@ -27,21 +27,13 @@ class SalesDataset:
             "year_month": SalesDatasetColumn("Year-Month"),
         }
 
-    def set_filename(self, filename: str):
-        self.__filename = filename
-
-    def get_filename(self) -> str:
-        return self.__filename
-
-    def set_columns(self, columns: [str, SalesDatasetColumn]):
-        self.__columns = columns
-
-    def get_columns(self) -> dict[str, SalesDatasetColumn]:
+    @property
+    def columns(self) -> dict[str, SalesDatasetColumn]:
         return self.__columns
 
     def extract_rows(self):
-        columns = self.get_columns()
-        filename = self.get_filename()
+        columns = self.__columns
+        filename = self.__filename
         with open(filename, "r", newline="", encoding="UTF-8") as sales:
             reader = csv.reader(sales, delimiter=",", quotechar=" ")
             for row in reader:
@@ -62,7 +54,7 @@ class SalesDataset:
         categories = []
         category = None
         profit = 0
-        columns = self.get_columns()
+        columns = self.__columns
 
         for category_name in set(col.cells):
             category = Category(category_name, 0, None, None)
@@ -78,8 +70,8 @@ class SalesDataset:
     def group_categories_and_subcategories(
         self, categories: list[Category], subcategories: list[Category]
     ):
-        categories_col = self.get_columns()["category"]
-        subcategories_col = self.get_columns()["subcategory"]
+        categories_col = self.__columns["category"]
+        subcategories_col = self.__columns["subcategory"]
         grouped_subcategories = set()
         for category in categories:
             for subcategory in subcategories:

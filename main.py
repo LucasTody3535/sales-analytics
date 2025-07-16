@@ -21,10 +21,8 @@ if __name__ == "__main__":
         font_coord = {"x": report.dims()["left_m"], "y": 15}
         report.add_text(content, font_coord, font_data, multiline=True)
 
-    categories = sales.extract_categories_from_rows(sales.get_columns()["category"])
-    subcategories = sales.extract_categories_from_rows(
-        sales.get_columns()["subcategory"]
-    )
+    categories = sales.extract_categories_from_rows(sales.columns["category"])
+    subcategories = sales.extract_categories_from_rows(sales.columns["subcategory"])
     sales.group_categories_and_subcategories(categories, subcategories)
     sales.set_colors(categories)
 
