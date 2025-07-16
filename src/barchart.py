@@ -8,28 +8,34 @@ class BarChart:
         self.__colors = None
         self.__chart_fig, self.__chart_ax = plt.subplots()
 
-    def set_data(self, data: list[float]):
-        self.__data = data
-
-    def get_data(self) -> list[float]:
+    @property
+    def data(self) -> list[float]:
         return self.__data
 
-    def set_labels(self, labels: list[str]):
-        self.__labels = labels
-
-    def get_labels(self) -> list[str]:
+    @property
+    def labels(self) -> list[str]:
         return self.__labels
 
-    def set_colors(self, colors: list[str]):
-        self.__colors = colors
-
-    def get_colors(self) -> list[str]:
+    @property
+    def colors(self) -> list[str]:
         return self.__colors
+
+    @data.setter
+    def data(self, data: list[float]):
+        self.__data = data
+
+    @labels.setter
+    def labels(self, labels: list[str]):
+        self.__labels = labels
+
+    @colors.setter
+    def colors(self, colors: list[str]):
+        self.__colors = colors
 
     def __format_legend_labels(self) -> list[str]:
         formmated_data = []
         counter = 0
-        for idx, data in enumerate(self.get_data()):
+        for idx, data in enumerate(self.data):
             formmated_data.append("")
             counter = 0
             for char in str(int(data)):
@@ -44,10 +50,10 @@ class BarChart:
     def gen_chart(self, title: str, labels_rotation: float = 0):
         formmated_data = self.__format_legend_labels()
         self.__chart_ax.bar(
-            self.get_labels(),
-            self.get_data(),
+            self.labels,
+            self.data,
             label=formmated_data,
-            color=self.get_colors(),
+            color=self.colors,
         )
         plt.xticks(rotation=labels_rotation)
         self.__chart_ax.legend(title=title)

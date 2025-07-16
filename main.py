@@ -48,9 +48,9 @@ if __name__ == "__main__":
             subcategories_colors.append(f"tab:{color}")
         subcategories_profits.extend(subcat_profit)
 
-    bar_chart.set_labels(categories_names)
-    bar_chart.set_data(categories_profits)
-    bar_chart.set_colors(categories_colors)
+    bar_chart.labels = categories_names
+    bar_chart.data = categories_profits
+    bar_chart.colors = categories_colors
     bar_chart.gen_chart(title="Total profit")
 
     categories_chart_image_path = "./out/categories_profit.png"
@@ -76,9 +76,9 @@ if __name__ == "__main__":
     report.add_image(categories_chart_image_path, img_dims, img_coord)
 
     bar_chart.clear()
-    bar_chart.set_labels(subcategories_names)
-    bar_chart.set_data(subcategories_profits)
-    bar_chart.set_colors(subcategories_colors)
+    bar_chart.labels = subcategories_names
+    bar_chart.data = subcategories_profits
+    bar_chart.colors = subcategories_colors
     bar_chart.gen_chart(title="Total profit", labels_rotation=90)
 
     with open("templates/subcategories.txt", encoding="utf-8") as subcategories_intro:
