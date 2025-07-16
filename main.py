@@ -39,11 +39,11 @@ if __name__ == "__main__":
     for cat in categories:
         cat_color, subcat_colors = cat.extract_colors()
         cat_profit, subcat_profit = cat.extract_profits()
-        categories_names.append(cat.get_name())
+        categories_names.append(cat.name)
         categories_colors.append(f"tab:{cat_color}")
         categories_profits.append(cat_profit)
-        for subcat in cat.get_subcategories():
-            subcategories_names.append(subcat.get_name())
+        for subcat in cat.subcategories:
+            subcategories_names.append(subcat.name)
         for color in subcat_colors:
             subcategories_colors.append(f"tab:{color}")
         subcategories_profits.extend(subcat_profit)

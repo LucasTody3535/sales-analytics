@@ -71,7 +71,7 @@ class SalesDataset:
             for idx, profit_val in enumerate(columns["profit"].get_cells()):
                 if category_name == col.get_cells()[idx]:
                     profit += float(profit_val)
-            category.set_profit(profit)
+            category.profit = profit
             categories.append(category)
             profit = 0
 
@@ -87,11 +87,11 @@ class SalesDataset:
             for subcategory in subcategories:
                 for idz, subcat_cell in enumerate(subcategories_col.get_cells()):
                     if (
-                        subcat_cell == subcategory.get_name()
-                        and categories_col.get_cells()[idz] == category.get_name()
+                        subcat_cell == subcategory.name
+                        and categories_col.get_cells()[idz] == category.name
                     ):
                         grouped_subcategories.add(subcategory)
-            category.set_subcategories(list(grouped_subcategories))
+            category.subcategories = list(grouped_subcategories)
             grouped_subcategories.clear()
 
     def set_colors(self, categories: list[Category]):
@@ -99,6 +99,6 @@ class SalesDataset:
         color = ""
         for category in categories:
             color = colors.pop()
-            category.set_color(color)
-            for subcategories in category.get_subcategories():
-                subcategories.set_color(color)
+            category.color = color
+            for subcategories in category.subcategories:
+                subcategories.color = color
