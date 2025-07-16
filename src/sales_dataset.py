@@ -11,23 +11,21 @@ class SalesDataset:
     """
 
     def __init__(self, filename: str):
-        self.set_filename(filename)
-        self.set_columns(
-            {
-                "order_id": SalesDatasetColumn("Order ID"),
-                "amount": SalesDatasetColumn("Amount"),
-                "profit": SalesDatasetColumn("Profit"),
-                "quantity": SalesDatasetColumn("Quantity"),
-                "category": SalesDatasetColumn("Category"),
-                "subcategory": SalesDatasetColumn("Sub-Category"),
-                "payment_mode": SalesDatasetColumn("PaymentMode"),
-                "order_date": SalesDatasetColumn("Order Date"),
-                "customer_name": SalesDatasetColumn("Customer Name"),
-                "state": SalesDatasetColumn("State"),
-                "city": SalesDatasetColumn("City"),
-                "year_month": SalesDatasetColumn("Year-Month"),
-            }
-        )
+        self.__filename = filename
+        self.__columns = {
+            "order_id": SalesDatasetColumn("Order ID"),
+            "amount": SalesDatasetColumn("Amount"),
+            "profit": SalesDatasetColumn("Profit"),
+            "quantity": SalesDatasetColumn("Quantity"),
+            "category": SalesDatasetColumn("Category"),
+            "subcategory": SalesDatasetColumn("Sub-Category"),
+            "payment_mode": SalesDatasetColumn("PaymentMode"),
+            "order_date": SalesDatasetColumn("Order Date"),
+            "customer_name": SalesDatasetColumn("Customer Name"),
+            "state": SalesDatasetColumn("State"),
+            "city": SalesDatasetColumn("City"),
+            "year_month": SalesDatasetColumn("Year-Month"),
+        }
 
     def set_filename(self, filename: str):
         self.__filename = filename
