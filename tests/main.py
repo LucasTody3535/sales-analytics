@@ -6,6 +6,7 @@ import sys
 sys.path.append(str(Path(__file__).parent.parent))
 
 from test_category import TestCategoryClass
+from test_sales_dataset import TestSalesDatasetClass
 
 if __name__ == "__main__":
     main()

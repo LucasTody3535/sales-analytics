@@ -1,0 +1,16 @@
+Order ID,Amount,Profit,Quantity,Category,Sub-Category,PaymentMode,Order Date,CustomerName,State,City,Year-Month
+B-26776,9726,1275,5,Electronics,Electronic Games,UPI,2023-06-27,David Padilla,Florida,Miami,2023-06
+B-26776,9726,1275,5,Electronics,Electronic Games,UPI,2024-12-27,Connor Morgan,Illinois,Chicago,2024-12
+B-26776,9726,1275,5,Electronics,Electronic Games,UPI,2021-07-25,Robert Stone,New York,Buffalo,2021-07
+B-26776,4975,1330,14,Electronics,Printers,UPI,2023-06-27,David Padilla,Florida,Miami,2023-06
+B-26776,4975,1330,14,Electronics,Printers,UPI,2024-12-27,Connor Morgan,Illinois,Chicago,2024-12
+B-26776,4975,1330,14,Electronics,Printers,UPI,2021-07-25,Robert Stone,New York,Buffalo,2021-07
+B-26640,883,117,10,Electronics,Laptops,EMI,2022-11-18,Richard Kelley,California,Los Angeles,2022-11
+B-26232,5219,1180,20,Office Supplies,Binders,COD,44547,Alexander Reed,New York,New York City,2021-12
+B-26232,5219,1180,20,Office Supplies,Binders,COD,44960,Jacqueline Harris,California,San Francisco,2023-02
+B-25394,3686,760,20,Office Supplies,Pens,Debit Card,44864,Tyler Park,California,San Francisco,2022-10
+B-25394,3686,760,20,Office Supplies,Pens,Debit Card,44576,Richard Wolfe,Ohio,Columbus,2022-01
+B-25555,5011,866,11,Furniture,Bookcases,Credit Card,45110,Jessica Richardson,California,San Diego,2023-07
+B-25555,5011,866,11,Furniture,Bookcases,Credit Card,44324,Kimberly Warren,Ohio,Cincinnati,2021-05
+B-26139,3958,630,15,Furniture,Sofas,EMI,44841,Casey Garcia,Florida,Orlando,2022-10
+B-26139,3132,963,1,Furniture,Tables,Debit Card,44841,Casey Garcia,Florida,Orlando,2022-10
