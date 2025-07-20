@@ -81,3 +81,17 @@ class TestSalesDatasetClass(TestCase):
             f"Categories list has unexpected quantity: {actual_size}\n"
             + "Expected quantity: {expect_quantity}",
         )
+
+    def test_subcategories_list_length_when_extracting_from_rows(self):
+        sales = SalesDataset("tests/data/dataset.csv")
+        expect_quantity = 8
+        columns = sales.columns["subcategory"]
+        sales.extract_rows()
+        categories = sales.extract_categories_from_rows(columns)
+        actual_size = len(categories)
+        self.assertEqual(
+            actual_size,
+            expect_quantity,
+            f"Categories list has unexpected quantity: {actual_size}\n"
+            + "Expected quantity: {expect_quantity}",
+        )
