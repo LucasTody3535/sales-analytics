@@ -77,7 +77,7 @@ python ./tests/main.py # Or 'python .\tests\main.py' in Powershell
     </li>
     <li>
         <p>
-            Add output example and usage tutorial.
+            <s>Add output example and usage tutorial.</s>
         </p>
     </li>
     <li>
