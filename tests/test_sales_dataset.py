@@ -67,3 +67,17 @@ class TestSalesDatasetClass(TestCase):
             expected_length,
             "Invalid Year-Month column length!",
         )
+
+    def test_categories_list_length_when_extracting_from_rows(self):
+        sales = SalesDataset("tests/data/dataset.csv")
+        expect_quantity = 3
+        columns = sales.columns["category"]
+        sales.extract_rows()
+        categories = sales.extract_categories_from_rows(columns)
+        actual_size = len(categories)
+        self.assertEqual(
+            actual_size,
+            expect_quantity,
+            f"Categories list has unexpected quantity: {actual_size}\n"
+            + "Expected quantity: {expect_quantity}",
+        )
