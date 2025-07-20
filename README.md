@@ -57,6 +57,16 @@ python ./main.py # Or 'python .\main.py' in Powershell
 
 The analytics will be generated and a browser will be opened with the generated .pdf file located in the **out** folder. An example output can be found in the **example** folder.
 
+## Running the tests
+
+> More tests will be added as the analytics evolve.
+
+Some steps from the previous section applies, only the last one is changed. The command to run the tests is:
+
+```bash
+python ./tests/main.py # Or 'python .\tests\main.py' in Powershell
+```
+
 ## TODO
 
 <ol>
